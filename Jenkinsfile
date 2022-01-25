@@ -21,8 +21,8 @@ pipeline {
         }
     }
     parameters {
-        text(name:'Ejecutor', defaultValue:'''Nombre de la persona'''),
-        text(name:'Motivo', defaultValue:'''Motivo de ejecución'''),
+        text(name:'Ejecutor', defaultValue:'''Nombre de la persona''')
+        text(name:'Motivo', defaultValue:'''Motivo de ejecución''')
         text(name:'Correo', defaultValue:'''ejemplo@ejemplo.com''')
     }
 }
