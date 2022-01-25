@@ -22,7 +22,7 @@ pipeline {
         stage('Update_Readme'){
             steps{
                 sh """
-                    node index.js ${env.TEST}
+                    node ./jenkinsScripts/index.js ${env.TEST}
                 """
             }
         }
