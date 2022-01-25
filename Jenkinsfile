@@ -24,7 +24,7 @@ pipeline {
                 sh """
                     cd jenkinsScripts && 
                     npm install &&
-                    node ./jenkinsScripts/index.js ${env.TEST}
+                    node index.js ${env.TEST}
                 """
             }
         }
