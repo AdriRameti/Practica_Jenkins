@@ -5,19 +5,26 @@ pipeline {
     }
     stages {
         stage('Linter'){
-            script {
-                env.LINT = sh(script: "npm run lint",returnStatus:true)
+            steps{
+                script {
+                    env.LINT = sh(script: "npm run lint",returnStatus:true)
+                }
             }
+
         }
         stage('Test'){
-            script {
-                env.TEST = sh(script: " npm run build && npm start",returnStatus:true)
+            steps{
+                script {
+                    env.TEST = sh(script: " npm run build && npm start",returnStatus:true)
+                }
             }
         }
         stage('Update_Readme'){
-            sh """
-                node index.js ${env.TEST}
-            """
+            steps{
+                sh """
+                    node index.js ${env.TEST}
+                """
+            }
         }
     }
     parameters {
