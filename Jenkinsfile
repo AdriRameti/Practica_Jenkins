@@ -5,9 +5,12 @@ pipeline {
     }
     stages {
         stage('Init'){
-            sh 'npm install -y'
-            sh 'npm run build'
-            sh 'npm start &'
+            steps{
+                sh 'npm install -y'
+                sh 'npm run build'
+                sh 'npm start &'
+            }
+
         }
         stage('Linter'){
             steps{
