@@ -6,7 +6,7 @@ async function new_badge() {
     let outcome = Boolean(process.argv[2]);
     let readme = '../README.md'; 
     let badge;
-    console.log(outcome);
+    console.log(process.argv[2]);
     if (outcome == true) {
         console.log('Entra success');
         badge = '![badge-success](https://img.shields.io/badge/tested%20with-Cypress-04C38E.svg)'

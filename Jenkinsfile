@@ -15,7 +15,7 @@ pipeline {
         stage('Test'){
             steps{
                 script {
-                    env.TEST = sh(script: " npm run build && npm start")
+                    env.TEST = sh(script: " npm run build && npm start",returnStatus:true)
                 }
             }
         }
