@@ -7,7 +7,7 @@ pipeline {
         stage('Linter'){
             steps{
                 script {
-                    env.LINT = sh(script: "npm run lint",returnStatus:true)
+                    env.LINT = sh(script: "npm install && npm run lint",returnStatus:true)
                 }
             }
 
