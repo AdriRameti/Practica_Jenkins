@@ -4,7 +4,7 @@ const fs = require('fs');
 async function new_badge() {
 
     let outcome = Boolean(process.argv[2]);
-    let readme = 'README.md'; 
+    let readme = '../README.md'; 
     let badge;
     console.log(outcome);
     if (outcome == true) {
