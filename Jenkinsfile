@@ -4,10 +4,15 @@ pipeline {
         pollSCM('0 */3 * * *') 
     }
     stages {
+        stage('Init'){
+            sh 'npm install -y'
+            sh 'npm run build'
+            sh 'npm start &'
+        }
         stage('Linter'){
             steps{
                 script {
-                    env.LINT = sh(script: "npm install && npm run lint",returnStatus:true)
+                    env.LINT = sh(script: "npm run lint",returnStatus:true)
                 }
             }
 
@@ -15,7 +20,7 @@ pipeline {
         stage('Test'){
             steps{
                 script {
-                    env.TEST = sh(script: "npm run build npm start & ./node_modules/.bin/cypress run ",returnStatus:true)
+                    env.TEST = sh(script: "./node_modules/.bin/cypress run ",returnStatus:true)
                 }
             }
         }
