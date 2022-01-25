@@ -15,7 +15,7 @@ pipeline {
         stage('Test'){
             steps{
                 script {
-                    env.TEST = sh(script: " npm cypress ",returnStatus:true)
+                    env.TEST = sh(script: " npm run cypress ",returnStatus:true)
                 }
             }
         }
