@@ -22,6 +22,8 @@ pipeline {
         stage('Update_Readme'){
             steps{
                 sh """
+                    cd jenkinsScripts && 
+                    npm install &&
                     node ./jenkinsScripts/index.js ${env.TEST}
                 """
             }
