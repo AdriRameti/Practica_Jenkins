@@ -34,6 +34,11 @@ pipeline {
                     npm install &&
                     node index.js ${env.TEST}
                 """
+                sh """
+                    git add .
+                    git commit -m "Update Readme"
+                    git push origin HEAD:master
+                """
             }
         }
     }
