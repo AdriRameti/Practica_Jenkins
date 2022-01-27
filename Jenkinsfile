@@ -35,9 +35,12 @@ pipeline {
                     node index.js ${env.TEST}
                 """
                 sh """
+                    git config --global user.email "adri7agu@gmail.com"
+                    git config --global user.name "AdriRameti"
                     git add .
                     git commit -m "Update Readme"
                     git push origin HEAD:master
+
                 """
             }
         }
