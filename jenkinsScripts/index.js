@@ -11,10 +11,12 @@ async function new_badge() {
         console.log('Entra success');
         badge = '![badge-success](https://img.shields.io/badge/tested%20with-Cypress-04C38E.svg)'
     } else {
+        console.log('Entra failure')
         badge = '![badge-failure](https://img.shields.io/badge/test-failure-red)'
     }
 
     fs.readFile(readme, 'utf8', function (err, data) {
+        console.log('entra fs readfile')
         if (err) {
             return console.log(err);
         }
