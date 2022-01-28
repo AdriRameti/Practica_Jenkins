@@ -47,6 +47,13 @@ pipeline {
 
             }
         }
+        stage('Deploy_to_Vercel'){
+            steps{
+                sh """
+                    echo ${env.TEST}
+                """
+            }
+        }
     }
     parameters {
         text(name:'Ejecutor', defaultValue:'''Nombre de la persona''')
