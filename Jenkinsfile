@@ -36,6 +36,11 @@ pipeline {
                 """
                 sh 'git config --global user.email \'adri7agu@gmail.com\''
                 sh 'git config --global user.email \'AdriRameti\''
+                withCredentials([usernameColonPassword(credentialsId: 'mytoken', variable: 'TOKEN')]) {
+                    sh '''
+                    git remote origin set-url https://$TOKEN@github.com/AdriRameti/Pactica_jenkins.git
+                    '''
+                }
                 sh """
                     git add .
                     git commit -m "Update Readme"
