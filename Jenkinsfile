@@ -36,7 +36,7 @@ pipeline {
                 """
                 sh 'git config --global user.email \'adri7agu@gmail.com\''
                 sh 'git config --global user.email \'AdriRameti\''
-                withCredentials([usernameColonPassword(credentialsId: 'mytoken', variable: 'TOKEN')]) {
+                withCredentials([usernameColonPassword(credentialsId: 'jenkins_practica', variable: 'TOKEN')]) {
                     sh '''
                     git remote origin set-url https://$TOKEN@github.com/AdriRameti/Pactica_Jenkins.git
                     '''
