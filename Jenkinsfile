@@ -41,7 +41,7 @@ pipeline {
                 sh 'chmod +x ./jenkinsScripts/git_commands.sh'
                 withCredentials([usernameColonPassword(credentialsId: 'jenkins_practica', variable: 'TOKEN')]) {
                     sh """
-                        ./jenkinsScripts/git_commands.sh ${TOKEN} ${Ejecutor} ${Motivo} 
+                        ./jenkinsScripts/git_commands.sh ${TOKEN} ${Ejecutor} '${Motivo}' 
                     """
                 }
 
