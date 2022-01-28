@@ -38,7 +38,7 @@ pipeline {
         }
         stage('Push_Changes'){
             steps{
-                // sh 'chmod +x ./jenkinsScripts/git_commands.sh'
+                sh 'chmod +x ./jenkinsScripts/git_commands.sh'
                 withCredentials([usernameColonPassword(credentialsId: 'jenkins_practica', variable: 'TOKEN')]) {
                     sh """
                         ./jenkinsScripts/git_commands.sh ${Ejecutor} ${Motivo} ${TOKEN}
