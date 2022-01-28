@@ -50,7 +50,7 @@ pipeline {
         stage('Deploy_to_Vercel'){
             steps{
                 sh """
-                    echo ${env.TEST}
+                    echo ${env.TEST.toBoolean()}
                 """
             }
         }
