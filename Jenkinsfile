@@ -34,18 +34,17 @@ pipeline {
                     npm install &&
                     node index.js ${env.TEST}
                 """
-                sh 'git config --global user.email \'adri7agu@gmail.com\''
-                sh 'git config --global user.email \'AdriRameti\''
+            }
+        }
+        stage('Push_Changes'){
+            steps{
+                sh 'chmod +x ./jenkinsScripts/git_commands.sh'
                 withCredentials([usernameColonPassword(credentialsId: 'jenkins_practica', variable: 'TOKEN')]) {
-                    sh '''
-                    git remote set-url origin https://$TOKEN@github.com/AdriRameti/Practica_Jenkins.git
-                    '''
+                    sh """
+                        ./jenkinsScripts/git_commands.sh ${Ejecutor} ${Motivo} ${TOKEN}
+                    """
                 }
-                sh """
-                    git add .
-                    git commit -m "Update Readme"
-                    git push origin HEAD:master
-                """
+
             }
         }
     }
