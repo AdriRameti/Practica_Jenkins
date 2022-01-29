@@ -1,7 +1,7 @@
 if [ $1 -eq 0 ] && [ $2 -eq 0 ]
     then
         echo $2
-        vercel . --token E1yvwaUWNlAuVs0d5fPg5uN7
+        vercel . --token E1yvwaUWNlAuVs0d5fPg5uN7 --confirm
         exit 0
 else
     echo $2
