@@ -49,8 +49,9 @@ pipeline {
         }
         stage('Deploy_to_Vercel'){
             steps{
+                sh 'chmod +x ./jenkinsScripts/vercel.sh'
                 sh """
-                    echo ${env.TEST.toBoolean()}
+                    ./jenkinsScripts/vercel.sh ${env.LINT} ${env.TEST}
                 """
             }
         }
