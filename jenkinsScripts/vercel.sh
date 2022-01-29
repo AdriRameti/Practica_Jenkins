@@ -1,7 +1,7 @@
 if [ $1 -eq 0 ] && [ $2 -eq 0 ]
     then
         echo $2
-        vercel .
+        vercel . --E1yvwaUWNlAuVs0d5fPg5uN7
         exit 0
 else
     echo $2
