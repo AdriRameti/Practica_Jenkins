@@ -3,11 +3,11 @@ const fs = require('fs');
 
 async function new_badge() {
 
-    let outcome = !Boolean(process.argv[2]);
+    let outcome = process.argv[2];
     let readme = '../README.md'; 
     let badge;
     console.log(outcome);
-    if (outcome == true) {
+    if (outcome === 0) {
         console.log('Entra success');
         badge = '![badge-success](https://img.shields.io/badge/tested%20with-Cypress-04C38E.svg)'
     } else {
