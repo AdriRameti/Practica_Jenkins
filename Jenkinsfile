@@ -75,17 +75,11 @@ pipeline {
                 stage('Custom_Stage') {
                     steps {
                         script {
-                            if (env.LINT.toBoolean() == false && env.TEST.toBoolean() == false && env.UPDATE.toBoolean() == false && env.PUSH.toBoolean() == false){
+                            if (env.LINT == 0 && env.TEST == 0 && env.UPDATE == 0 && env.PUSH == 0){
                                 echo "${env.LINT},${env.TEST},${env.UPDATE},${env.PUSH}"
                                 echo "Mejor dedicate a otra cosa"
-                            }else if(env.LINT.toBoolean() == false && env.TEST.toBoolean() == false && env.UPDATE.toBoolean()){
-                                echo "Debes revisar los comandos de git"
-                            }else if(env.LINT.toBoolean() == false && env.TEST.toBoolean()){
-                                echo "Tienes un problema al actualizar el README.md"
-                            }else if(env.LINT.toBoolean() == false){
-                                echo "Cuidado con los errores de testeo"
                             }else{
-                                echo "Sigue asi, conseguiras lo que quieres"
+                                echo "Else"
                             }
                         }
                     }
