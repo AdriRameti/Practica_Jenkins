@@ -84,6 +84,7 @@ pipeline {
                             }else if(!env.LINT.toBoolean() == false){
                                 echo "Cuidado con los errores de testeo"
                             }else{
+                                echo !env.LINT.toBoolean()
                                 echo "Sigue asi, conseguiras lo que quieres"
                             }
                         }
