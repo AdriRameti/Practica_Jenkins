@@ -75,7 +75,7 @@ pipeline {
                 stage('Custom_Stage') {
                     steps {
                         script {
-                            if (env.LINT == 0 && env.TEST == 0 && env.UPDATE == 0 && env.PUSH == 0){
+                            if (env.LINT == '0' && env.TEST == '0' && env.UPDATE == '0' && env.PUSH == '0'){
                                 echo "${env.LINT},${env.TEST},${env.UPDATE},${env.PUSH}"
                                 echo "Mejor dedicate a otra cosa"
                             }else{
