@@ -3,7 +3,7 @@ const fs = require('fs');
 
 async function new_badge() {
 
-    let outcome = process.argv[2];
+    let outcome = parseInt(process.argv[2]);
     let readme = '../README.md'; 
     let badge;
     console.log(outcome);
