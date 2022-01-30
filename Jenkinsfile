@@ -76,6 +76,7 @@ pipeline {
                     steps {
                         script {
                             if (env.LINT.toBoolean() == false && env.TEST.toBoolean() == false && env.UPDATE.toBoolean() == false && env.PUSH.toBoolean() == false){
+                                echo "${env.LINT},${env.TEST},${env.UPDATE},${env.PUSH}"
                                 echo "Mejor dedicate a otra cosa"
                             }else if(env.LINT.toBoolean() == false && env.TEST.toBoolean() == false && env.UPDATE.toBoolean()){
                                 echo "Debes revisar los comandos de git"
