@@ -29,20 +29,26 @@ pipeline {
         }
         stage('Update_Readme'){
             steps{
-                sh """
-                    cd jenkinsScripts && 
-                    npm install &&
-                    node index.js ${env.TEST}
-                """
+                script {
+                    env.UPDATE = sh(script: "cd jenkinsScripts && npm install && node index.js ${env.TEST} ",returnStatus:true)
+                }
+                // sh """
+                //     cd jenkinsScripts && 
+                //     npm install &&
+                //     node index.js ${env.TEST}
+                // """
             }
         }
         stage('Push_Changes'){
             steps{
                 sh 'chmod +x ./jenkinsScripts/git_commands.sh'
                 withCredentials([usernameColonPassword(credentialsId: 'jenkins_practica', variable: 'TOKEN')]) {
-                    sh """
-                        ./jenkinsScripts/git_commands.sh ${TOKEN} ${Ejecutor} '${Motivo}' 
-                    """
+                    script {
+                        env.PUSH = sh(script:"./jenkinsScripts/git_commands.sh ${TOKEN} ${Ejecutor} '${Motivo}' ",returnStatus:true)
+                    }
+                    // sh """
+                    //     ./jenkinsScripts/git_commands.sh ${TOKEN} ${Ejecutor} '${Motivo}' 
+                    // """
                 }
 
             }
@@ -50,11 +56,43 @@ pipeline {
         stage('Deploy_to_Vercel'){
             steps{
                 sh 'chmod +x ./jenkinsScripts/vercel.sh'
-                sh """
-                    ./jenkinsScripts/vercel.sh ${env.LINT} ${env.TEST}
-                """
+                // sh """
+                //     ./jenkinsScripts/vercel.sh ${env.LINT} ${env.TEST}
+                // """
+                script {
+                    env.VERCEL = sh(script:"./jenkinsScripts/vercel.sh ${env.LINT} ${env.TEST} ${env.UPDATE} ${env.PUSH}")
+                }
             }
         }
+        stage('Parallel Stage') {
+            parallel {
+                stage('Notification') {
+                    steps {
+                        echo 'Stage 1'
+                    }
+                }
+
+                stage('Custom_Stage') {
+                    steps {
+                        script {
+                            if (env.LINT.toBoolean() == false && env.TEST.toBoolean() == false && env.UPDATE.toBoolean() == false && env.PUSH.toBoolean() == false){
+                                echo "Mejor dedicate a otra cosa"
+                            }else if(env.LINT.toBoolean() == false && env.TEST.toBoolean() == false && env.UPDATE.toBoolean()){
+                                echo "Debes revisar los comandos de git"
+                            }else if(env.LINT.toBoolean() == false && env.TEST.toBoolean()){
+                                echo "Tienes un problema al actualizar el README.md"
+                            }else if(env.LINT.toBoolean() == false){
+                                echo "Cuidado con los errores de testeo"
+                            }else{
+                                echo "Sigue asi, conseguiras lo que quieres"
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+
     }
     parameters {
         text(name:'Ejecutor', defaultValue:'''Pepe''')
