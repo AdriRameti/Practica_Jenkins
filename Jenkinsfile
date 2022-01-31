@@ -32,11 +32,6 @@ pipeline {
                 script {
                     env.UPDATE = sh(script: "cd jenkinsScripts && npm install && node index.js ${env.TEST} ",returnStatus:true)
                 }
-                // sh """
-                //     cd jenkinsScripts && 
-                //     npm install &&
-                //     node index.js ${env.TEST}
-                // """
             }
         }
         stage('Push_Changes'){
@@ -46,9 +41,6 @@ pipeline {
                     script {
                         env.PUSH = sh(script:"./jenkinsScripts/git_commands.sh ${TOKEN} ${Ejecutor} '${Motivo}' ",returnStatus:true)
                     }
-                    // sh """
-                    //     ./jenkinsScripts/git_commands.sh ${TOKEN} ${Ejecutor} '${Motivo}' 
-                    // """
                 }
 
             }
@@ -56,9 +48,6 @@ pipeline {
         stage('Deploy_to_Vercel'){
             steps{
                 sh 'chmod +x ./jenkinsScripts/vercel.sh'
-                // sh """
-                //     ./jenkinsScripts/vercel.sh ${env.LINT} ${env.TEST}
-                // """
                 script {
                     env.VERCEL = sh(script:"./jenkinsScripts/vercel.sh ${env.LINT} ${env.TEST} ${env.UPDATE} ${env.PUSH}")
                 }
@@ -84,7 +73,6 @@ pipeline {
                             }else if(!env.LINT.toBoolean() == false){
                                 echo "Cuidado con los errores de testeo"
                             }else{
-                                echo !env.LINT.toBoolean()
                                 echo "Sigue asi, conseguiras lo que quieres"
                             }
                         }
