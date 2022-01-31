@@ -6,7 +6,7 @@ async function main() {
   // Generate test SMTP service account from ethereal.email
   // Only needed if you don't have a real mail account for testing
   let testAccount = await nodemailer.createTestAccount();
-  let receiver = (parseInt(process.argv[2]) == 0) ? "Resultado Correcto" : "Resultado incorrecto"
+  let receiver = process.argv[2]
   let lintResult = (parseInt(process.argv[3]) == 0) ? "Resultado Correcto" : "Resultado incorrecto"
   let testResult = (parseInt(process.argv[4]) == 0) ? "Resultado Correcto" : "Resultado incorrecto"
   let updateResult = (parseInt(process.argv[5]) == 0) ? "Resultado Correcto" : "Resultado incorrecto"
