@@ -6,13 +6,13 @@ async function main() {
   // Generate test SMTP service account from ethereal.email
   // Only needed if you don't have a real mail account for testing
   let testAccount = await nodemailer.createTestAccount();
-  let receiver = process.argv[2]
-  let lintResult = process.argv[3]
-  let testResult = process.argv[4]
-  let updateResult = process.argv[5]
-  let pushResult = process.argv[6]
-  let vercelResult = process.argv[7]
-  console.log(receiver,lintResult,testResult,updateResult,pushResult,vercelResult)
+  let receiver = (parseInt(process.argv[2]) == 0) ? "Resultado Correcto" : "Resultado incorrecto"
+  let lintResult = (parseInt(process.argv[3]) == 0) ? "Resultado Correcto" : "Resultado incorrecto"
+  let testResult = (parseInt(process.argv[4]) == 0) ? "Resultado Correcto" : "Resultado incorrecto"
+  let updateResult = (parseInt(process.argv[5]) == 0) ? "Resultado Correcto" : "Resultado incorrecto"
+  let pushResult = (parseInt(process.argv[6]) == 0) ? "Resultado Correcto" : "Resultado incorrecto"
+  let vercelResult = (process.argv[7] == null) ? "Resultado Correcto" : "Resultado incorrecto"
+
   // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
     host: "smtp.ethereal.email",
@@ -27,10 +27,9 @@ async function main() {
   // send mail with defined transport object
   let info = await transporter.sendMail({
     from: '"Fred Foo 👻" <foo@example.com>', // sender address
-    to: "bar@example.com, baz@example.com", // list of receivers
-    subject: "Hello ✔", // Subject line
-    text: "Hello world?", // plain text body
-    html: "<b>Hello world?</b>", // html body
+    to: receiver, // list of receivers
+    subject: "Resultado de la pipeline ejecutada", // Subject line
+    text: "Linter_stage: "+lintResult+" ,Test_stage: "+testResult+" ,Update_readme_stage: "+updateResult+" ,Push_Changes_Stage: "+pushResult+" ,Vercel_Stage: "+vercelResult, // plain text body
   });
 
   console.log("Message sent: %s", info.messageId);

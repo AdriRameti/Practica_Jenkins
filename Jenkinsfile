@@ -48,9 +48,6 @@ pipeline {
         stage('Deploy_to_Vercel'){
             steps{
                 sh 'chmod +x ./jenkinsScripts/vercel.sh'
-                // script {
-                //     env.VERCEL = sh(script:"./jenkinsScripts/vercel.sh ${env.LINT} ${env.TEST} ${env.UPDATE} ${env.PUSH}")
-                // }
                 withCredentials([string(credentialsId: 'vercel', variable: 'VTOKEN')]) {
                     script {
                         env.VERCEL = sh(script:"./jenkinsScripts/vercel.sh ${env.LINT} ${env.TEST} ${env.UPDATE} ${env.PUSH} ${VTOKEN}")
