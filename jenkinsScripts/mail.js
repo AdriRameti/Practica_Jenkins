@@ -26,7 +26,7 @@ async function main() {
 
   // send mail with defined transport object
   let info = await transporter.sendMail({
-    from: '"Fred Foo 👻" <foo@example.com>', // sender address
+    from: 'rametiadri@gmail.com', // sender address
     to: receiver, // list of receivers
     subject: "Resultado de la pipeline ejecutada", // Subject line
     text: "Linter_stage: "+lintResult+" ,Test_stage: "+testResult+" ,Update_readme_stage: "+updateResult+" ,Push_Changes_Stage: "+pushResult+" ,Vercel_Stage: "+vercelResult, // plain text body
