@@ -57,7 +57,7 @@ El tercer parámetro será el Correo de Notificación y almacenará el correo al
     }
 ```
 
-IMAGEN 
+![image](https://user-images.githubusercontent.com/75810680/151886915-47d30794-ddcc-4907-849b-4d7dbc59f783.png)
 
 ### Triggers
 Otro de los apartados de la práctica, era introducir un trigger que, cada 3 horas, comprobara si han habido cambios en el repositorio y de ser así, ejecutaría de nuevo la pipeline. 
@@ -234,7 +234,7 @@ Facilitamos a los equipos frontend el desarrollo, la vista previa y el envío de
 
 Para poder hacer funcionar el despliegue en vercel, deberemos crear en nuestro perfil de Vercel un token que guardaremos en las credenciales de Jenkins y lo utilizaremos para poner en marcha el despliegue.
 
-IMAGEN TOKEN VERCEL
+![image](https://user-images.githubusercontent.com/75810680/151887022-98d39bef-d4c9-4cb7-abba-3effc02c3f91.png)
 
 Al igual que hemos utilizado el withCredentials para las acciones de git, aquí también lo utilizaremos para poder acceder a esa credencial que contiene el token de vercel y así poder utilizarlo. Además, le pasaremos al archivo SH el resultado de los stages anteriores para que solo haya despliegue si todas las stages anteriores se han ejecutado correctamente. Por otra parte, el resultado del despliegue al igual que las otras stages, se guardará en una variable de entorno.
 ###### Stage
@@ -269,7 +269,7 @@ fi
 ```
 Pincha [AQUÍ](https://practica-jenkins-adrirameti.vercel.app/) para ir a la página web desplegada.
 
-IMAGEN WEB VERCEL
+![image](https://user-images.githubusercontent.com/75810680/151887119-2e803528-9eba-440f-841d-af71bed1f543.png)
 
 #### Stages Paralelas 
 En este punto, realizaremos una stage paralela donde ejecutaremos a la vez una notificación por correo electrónico y una stage condicional que dependiendo del resultado de las stages anteriores nos mostrara un mensaje o otro. 
@@ -364,7 +364,7 @@ async function main() {
 main().catch(console.error);
 ```
 
-IMAGEN CORREOS ELECTRONICOS
+![image](https://user-images.githubusercontent.com/75810680/151887209-7bfa86d9-e01f-4bcc-9253-085989f00db6.png)
 
 #### Custome Stage
 En este punto, realizaremos un stage condicional que dependiendo del resultado de los diferentes stages, mostraremos un mensaje por consola o otro distinto.
@@ -391,7 +391,7 @@ En este punto, realizaremos un stage condicional que dependiendo del resultado d
 ### Credenciales de Jenkins
 Como hemos podido observar, utilizamos muchas variables sensibles que no queremos que se muestren por seguridad del proyecto o por otros aspectos. Es por eso que cada una de esas variables sensibles, se han guardado en el apartado de credenciales de Jenkins.
 
-IMAGEN CREDENCIALES JENKINS
+![image](https://user-images.githubusercontent.com/75810680/151887280-0c6a64c6-51c8-49dd-9cb6-4d06d1a883fd.png)
 
 ### Ejecución de la Pipeline
 Para poder ejecutar la pipeline y observar los resultados, he utilizado el plugin Blue Ocean 
@@ -410,4 +410,7 @@ Blue Ocean replantea la experiencia de usuario de Jenkins. Diseñado desde cero 
 
 La primera vez que entramos a utilizar Blue Ocean, al seleccionar la opción Github, de donde queremos obtener el código, nos pedirá un token asociado a la cuenta de nuestro Github. Una vez generemos e introducimos el token en este apartado, Blue Ocean se guardará el token y se guardará por tanto tu usuario de Github. Una vez en este punto ya podrás acceder a cualquier repositorio tuyo alojado en Github. 
 
-IMAGEN BLUE OCEAN
+![image](https://user-images.githubusercontent.com/75810680/151887365-1a5a81c6-c819-4c33-bce5-a2333565a9b8.png)
+    
+![image](https://user-images.githubusercontent.com/75810680/151887420-2e60a854-aaa2-4ee4-96c4-ef03dc8f27cb.png)
+
