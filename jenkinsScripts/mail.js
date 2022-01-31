@@ -11,7 +11,7 @@ async function main() {
   let testResult = (parseInt(process.argv[4]) == 0) ? "Resultado Correcto" : "Resultado incorrecto"
   let updateResult = (parseInt(process.argv[5]) == 0) ? "Resultado Correcto" : "Resultado incorrecto"
   let pushResult = (parseInt(process.argv[6]) == 0) ? "Resultado Correcto" : "Resultado incorrecto"
-  let vercelResult = (process.argv[7] == null) ? "Resultado Correcto" : "Resultado incorrecto"
+  let vercelResult = (process.argv[7] == 'null') ? "Resultado Correcto" : "Resultado incorrecto"
 
   // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
