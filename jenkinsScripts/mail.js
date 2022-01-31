@@ -19,14 +19,14 @@ async function main() {
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
-      user: testAccount.user, // generated ethereal user
-      pass: testAccount.pass, // generated ethereal password
+      user: 'adri7agu@gmail.com', // generated ethereal user
+      pass: 'jqzmamgyuhvcoqal', // generated ethereal password
     },
   });
 
   // send mail with defined transport object
   let info = await transporter.sendMail({
-    from: 'rametiadri@gmail.com', // sender address
+    from: 'adri7agu@gmail.com', // sender address
     to: receiver, // list of receivers
     subject: "Resultado de la pipeline ejecutada", // Subject line
     text: "Linter_stage: "+lintResult+" ,Test_stage: "+testResult+" ,Update_readme_stage: "+updateResult+" ,Push_Changes_Stage: "+pushResult+" ,Vercel_Stage: "+vercelResult, // plain text body
