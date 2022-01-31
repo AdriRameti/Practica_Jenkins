@@ -52,7 +52,10 @@ pipeline {
                 //     env.VERCEL = sh(script:"./jenkinsScripts/vercel.sh ${env.LINT} ${env.TEST} ${env.UPDATE} ${env.PUSH}")
                 // }
                 withCredentials([string(credentialsId: 'vercel', variable: 'V-TOKEN')]) {
-                    env.VERCEL = sh(script:"./jenkinsScripts/vercel.sh ${env.LINT} ${env.TEST} ${env.UPDATE} ${env.PUSH} ${V-TOKEN}")
+                    script {
+                        env.VERCEL = sh(script:"./jenkinsScripts/vercel.sh ${env.LINT} ${env.TEST} ${env.UPDATE} ${env.PUSH} ${V-TOKEN}")
+                    }
+                    
                 }
             }
         }
