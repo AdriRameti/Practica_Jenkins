@@ -63,7 +63,9 @@ pipeline {
             parallel {
                 stage('Notification') {
                     steps {
-                        echo 'Stage 1'
+                        sh """
+                            node mail.js '${Correo}' ${env.LINT} ${env.TEST} ${env.UPDATE} ${env.PUSH} ${env.VERCEL}
+                        """
                     }
                 }
 
