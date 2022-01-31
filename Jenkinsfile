@@ -63,6 +63,7 @@ pipeline {
             parallel {
                 stage('Notification') {
                     steps {
+                        sh 'cd jenkinsScripts'
                         sh """
                             node mail.js '${Correo}' ${env.LINT} ${env.TEST} ${env.UPDATE} ${env.PUSH} ${env.VERCEL}
                         """
