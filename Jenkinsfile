@@ -64,7 +64,7 @@ pipeline {
                 stage('Notification') {
                     steps {
                         sh """
-                            cd jenkinsScripts && npm install && node mail.js '${Correo}' ${env.LINT} ${env.TEST} ${env.UPDATE} ${env.PUSH} ${env.VERCEL}
+                            cd jenkinsScripts && npm install && npm install nodemailer --save && node mail.js '${Correo}' ${env.LINT} ${env.TEST} ${env.UPDATE} ${env.PUSH} ${env.VERCEL}
                         """
                     }
                 }
