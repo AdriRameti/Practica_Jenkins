@@ -413,4 +413,18 @@ La primera vez que entramos a utilizar Blue Ocean, al seleccionar la opción Git
 ![image](https://user-images.githubusercontent.com/75810680/151887365-1a5a81c6-c819-4c33-bce5-a2333565a9b8.png)
     
 ![image](https://user-images.githubusercontent.com/75810680/151887420-2e60a854-aaa2-4ee4-96c4-ef03dc8f27cb.png)
-
+    
+ ### Instalar Plugin
+ Para realizar este ultimo paso, instalaremos el plugin Dashboard View y modificaremos el dashboard creado a nuestro gusto.
+ 
+ #### Plugin Instalado
+ ![image](https://user-images.githubusercontent.com/75810680/151888019-694cfcf6-db9f-4359-b117-3db4bfcc2f76.png)
+ 
+ #### Creando una nueva vista 
+ ![image](https://user-images.githubusercontent.com/75810680/151888095-aec61964-58b8-4d72-9a41-362216b24544.png)
+   
+ #### Editando el Dashboard
+ ![image](https://user-images.githubusercontent.com/75810680/151888197-8b6016b2-6298-4697-8398-6389e724f27a.png)
+ 
+ #### Vista final 
+ ![image](https://user-images.githubusercontent.com/75810680/151888269-59d3db67-361c-4e1d-99ed-e8ffd1fb8c9d.png)
